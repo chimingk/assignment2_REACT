@@ -19,7 +19,7 @@ class Search extends React.Component {
 				<input
 			
 					type="text"
-					placeholder="Type Building Name to Filter" 
+					placeholder="Type building name here to filter" 
 					ref={ value => this.myValue = value }
 					onChange={this.filterUpdate.bind(this)}
 
