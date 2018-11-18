@@ -1,20 +1,35 @@
 import React from 'react';
 
-class BuilingList extends React.Component {
+class BuildingList extends React.Component {
 	render() {
-		//console.log('This is my directory file', this.props.data);
-		const { data } = this.props;
+		
 
-		const buildingList = data.map(directory => {
-			return (
-				<tr key={directory.id}>
-					<td>{directory.code} </td>
-					<td> {directory.name} </td>
-				</tr>
-			);
-		});
+
+		const { data, filterText, selectedUpdate } = this.props;
+
+
+
+		const buildingList = data
+			.filter( building =>{return building.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0})
+			
+
+			.map(directory => {
+				return (
+					<tr
+					
+					onClick={() => selectedUpdate(directory.id)}
+					key={directory.id}>
+						<td>{directory.code} </td>
+						<td> {directory.name} </td>
+					</tr>
+				);
+			});
+
 
 		return <div>{buildingList}</div>;
 	}
 }
-export default BuilingList;
+
+// Note to self - typo here with BuildingList meant many lost hours to debugging
+export default BuildingList;
+
